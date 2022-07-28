@@ -5,8 +5,10 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
+    
 server:
   port: 8080
+  
 spring:
   cloud:
     gateway:
@@ -41,13 +43,12 @@ spring:
           predicates:
             - Path=/tag-team-service/**
           filters:
-            - RewritePath=/tag-team-service(?<segment>/?.*), $\{segment}
+            - RewritePath=/tag-service(?<segment>/?.*), $\{segment}
         - id: interviewer-service
           uri: http://localhost:8087
           predicates:
             - Path=/interviewer-service/**
           filters:
             - RewritePath=/interviewer-service(?<segment>/?.*), $\{segment}
-       
        
        
